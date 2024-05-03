@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('seo');
             $table->decimal('price', 10, 2);
             $table->text('image');
-            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->boolean('is_active')->default(true);
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
