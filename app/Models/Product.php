@@ -22,7 +22,6 @@ class Product extends Model
         'image',
         'brand_id',
         'category_id',
-        'image',
         'is_active',
         'is_featured'
     ];

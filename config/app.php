@@ -17,6 +17,8 @@ return [
 
     'storage' => env('STORAGE', './public/storage'),
 
+    'stripe' => env('STRIPE', ''),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

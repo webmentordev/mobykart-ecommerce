@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+[x-cloak]{
+    display: none !important;
+}
+
+.tb-btn-active{
+    @apply py-1 px-3 bg-blue-600 text-white font-semibold rounded-lg;
+}
+
+.tb-btn-disable{
+    @apply py-1 px-3 bg-red-600 text-white font-semibold rounded-lg;
+}

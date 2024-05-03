@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Cart;
@@ -33,17 +34,22 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(func
         Route::get('/product/update/{product:slug}', [ProductController::class, 'update'])->name('product.update');
         Route::patch('/product/update/{product:slug}', [ProductController::class, 'edit']);
         Route::patch('/product/status/{product:slug}', [ProductController::class, 'status'])->name('product.status');
-        Route::patch('/product/featured/{product:slug}', [ProductController::class, 'featured'])->name('product.feature');
+        Route::patch('/product/featured/{product:slug}', [ProductController::class, 'feature'])->name('product.feature');
 
         Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-        Route::post('/category/create', [CategoryController::class, 'store']);
+        Route::post('/category/create', [CategoryController::class, 'store'])->name('category.create');
         Route::patch('/category/update/{category:slug}', [CategoryController::class, 'update'])->name('category.update');
         Route::patch('/category/status/{category:slug}', [CategoryController::class, 'status'])->name('category.status');
 
         Route::get('/brands', [BrandController::class, 'index'])->name('brands');
-        Route::post('/brand/create', [BrandController::class, 'store']);
+        Route::post('/brand/create', [BrandController::class, 'store'])->name('brand.create');
         Route::patch('/brand/update/{brand:slug}', [BrandController::class, 'update'])->name('brand.update');
         Route::patch('/brand/status/{brand:slug}', [BrandController::class, 'status'])->name('brand.status');
+
+        Route::get('/images', [ImageController::class, 'index'])->name('images');
+        Route::post('/image/upload/', [ImageController::class, 'upload'])->name('image.upload');
+        Route::post('/image/store/', [ImageController::class, 'store'])->name('image.store');
+        Route::delete('/image/delete/{image:slug}', [ImageController::class, 'delete'])->name('image.delete');
     });
 });
 
