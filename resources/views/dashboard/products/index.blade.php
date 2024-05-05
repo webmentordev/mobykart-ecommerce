@@ -24,6 +24,7 @@
                                 <th class="text-start">Title</th>
                                 <th class="text-start">Slug</th>
                                 <th class="text-start">Price</th>
+                                <th class="text-start">Tags</th>
                                 <th class="text-start">Brand</th>
                                 <th class="text-start">Category</th>
                                 <th class="text-start">Featured</th>
@@ -38,6 +39,7 @@
                                     <td class="text-start"><a class="underline text-blue-600" href="{{ route('product', $item->slug) }}">{{ $item->title }}</a></td>
                                     <td class="text-start">{{ $item->slug }}</td>
                                     <td class="text-start">${{ number_format($item->price, 2) }}</td>
+                                    <td class="text-start">{{ $item->tags_count }}</td>
                                     <td class="text-start">{{ $item->brand->title }}</td>
                                     <td class="text-start">{{ $item->category->title }}</td>
                                     <td class="text-start">

@@ -9,3 +9,5 @@
 * Created Order DB to store product orders
 * Complete Order routes, show cancel / complete page
 * Tags for the products to quick search related products
+* Tags and products has a relation and separate system
+* Tag for product should be unique (protect tags from duplication)
