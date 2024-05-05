@@ -7,6 +7,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use App\Livewire\Cart;
 use App\Livewire\Home;
 use App\Livewire\Product;
@@ -55,6 +56,10 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(func
         Route::post('/image/upload/', [ImageController::class, 'upload'])->name('image.upload');
         Route::post('/image/store/', [ImageController::class, 'store'])->name('image.store');
         Route::delete('/image/delete/{image:slug}', [ImageController::class, 'delete'])->name('image.delete');
+
+        Route::get('/tags', [TagController::class, 'index'])->name('tags');
+        Route::post('/tag/store/', [TagController::class, 'store'])->name('tag.store');
+        Route::delete('/tag/delete/{tag:slug}', [TagController::class, 'delete'])->name('tag.delete');
     });
 });
 
