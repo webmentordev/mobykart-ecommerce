@@ -4,6 +4,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Cart;
@@ -16,6 +17,10 @@ Route::get('/', Home::class)->name('home');
 Route::get('/products', Products::class)->name('products');
 Route::get('/product/{product:slug}', Product::class)->name('product');
 Route::get('/cart', Cart::class)->name('cart');
+
+// Order payment status routes
+Route::get('/complete/{order:order_id}', [OrderController::class, 'complete']);
+Route::get('/cancel/{order:order_id}', [OrderController::class, 'cancel']);
 
 Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(function () {
     // Route for dashboard, admin only
