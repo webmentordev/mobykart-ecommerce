@@ -20,7 +20,9 @@ class Order extends Model
         'payment',
         'shipping',
         'order_id',
-        'url'
+        'url',
+        'transit_id',
+        'logistics'
     ];
     
     public function product(){
