@@ -13,6 +13,12 @@ use App\Livewire\Cart;
 use App\Livewire\Home;
 use App\Livewire\Product;
 use App\Livewire\Products;
+use App\Mail\Canceled;
+use App\Mail\Completed;
+use App\Mail\Pending;
+use App\Mail\Processed;
+use App\Mail\Refunded;
+use App\Mail\Transit;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
@@ -66,6 +72,11 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(func
         Route::post('/product-tag/store/', [ProductTagController::class, 'store'])->name('product.tags.store');
         Route::delete('/product-tag/delete/{tag:slug}', [ProductTagController::class, 'delete'])->name('product.tags.delete');
     });
+});
+
+
+Route::get('/email', function(){
+    return new Transit('515515555112331', 'asdasdasd', 'Fedex');
 });
 
 require __DIR__.'/auth.php';

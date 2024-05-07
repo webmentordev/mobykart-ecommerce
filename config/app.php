@@ -19,6 +19,10 @@ return [
 
     'stripe' => env('STRIPE', ''),
 
+    'smtp' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+
+    'contact' => env('CONTACT', 'contact@example.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

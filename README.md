@@ -11,3 +11,9 @@
 * Tags for the products to quick search related products
 * Tags and products has a relation and separate system
 * Tag for product should be unique (protect tags from duplication)
+* Pending email (url - string)
+* Processed email (orderID - string)
+* Canceled email (orderID - string)
+* Refunded email (orderID - string)
+* Transit email (orderID, transit, logistics - string)
+* Completed email (orderID - string)
