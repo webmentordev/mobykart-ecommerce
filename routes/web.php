@@ -67,10 +67,13 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(func
         Route::get('/tags', [TagController::class, 'index'])->name('tags');
         Route::post('/tag/store/', [TagController::class, 'store'])->name('tag.store');
         Route::delete('/tag/delete/{tag:slug}', [TagController::class, 'delete'])->name('tag.delete');
-
+        
         Route::get('/product-tags', [ProductTagController::class, 'index'])->name('product.tags');
         Route::post('/product-tag/store/', [ProductTagController::class, 'store'])->name('product.tags.store');
         Route::delete('/product-tag/delete/{tag:slug}', [ProductTagController::class, 'delete'])->name('product.tags.delete');
+
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+        Route::patch('/order/status/{order:order_id}', [OrderController::class, 'status'])->name('order.status');
     });
 });
 

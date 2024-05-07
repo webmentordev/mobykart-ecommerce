@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
+            $table->string('transit_id')->nullable(); // Tracking ID for logistics
+            $table->string('logistics')->nullable();
             $table->foreignId('product_id');
             $table->bigInteger('quantity');
             $table->decimal('price', 10, 2);
