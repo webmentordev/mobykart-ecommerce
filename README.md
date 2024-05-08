@@ -17,3 +17,6 @@
 * Refunded email (orderID - string)
 * Transit email (orderID, transit, logistics - string)
 * Completed email (orderID - string)
+* Change shipping status of order
+* In Transit will require TrackingID & Logistics name
+* Option to Send email or not when status change

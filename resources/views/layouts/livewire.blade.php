@@ -16,6 +16,8 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
+        <x-top />
+        @livewire('components.navbar')
         <main>
             {{ $slot }}
         </main>
