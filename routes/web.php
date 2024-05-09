@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductTagController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TagController;
 use App\Livewire\Cart;
 use App\Livewire\Home;
 use App\Livewire\Product;
 use App\Livewire\Products;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductTagController;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/products', Products::class)->name('products');
@@ -68,6 +69,11 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(func
 
         Route::get('/orders', [OrderController::class, 'index'])->name('orders');
         Route::patch('/order/status/{order:order_id}', [OrderController::class, 'status'])->name('order.status');
+
+        Route::get('/gallery/images', [GalleryController::class, 'index'])->name('gallery');
+        Route::post('/gallery/store/', [GalleryController::class, 'store'])->name('gallery.store');
+        Route::patch('/gallery/store/{gallery:slug}', [GalleryController::class, 'status'])->name('gallery.status');
+        Route::delete('/gallery/delete/{gallery:slug}', [GalleryController::class, 'delete'])->name('gallery.delete');
     });
 });
 

@@ -38,4 +38,8 @@ class Product extends Model
     public function tags(){
         return $this->hasMany(ProductTag::class);
     }
+
+    public function gallery(){
+        return $this->hasMany(Gallery::class);
+    }
 }

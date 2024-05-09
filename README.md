@@ -1,5 +1,6 @@
 ## Project Details
-* Stripe integration
+This product is extended from my e-commerce template
+* Stripe integration (Not paypal)
 * Create products (need Category & Brand)
 * Products has relation with category & brand
 * Upload images for product details body using CKEditor
@@ -20,3 +21,6 @@
 * Change shipping status of order
 * In Transit will require TrackingID & Logistics name
 * Option to Send email or not when status change
+* Gallery to upload pictures about the product
+* Gallery images will showup in the single product page
+* Home, product, cart & products pages are build with Livewire
