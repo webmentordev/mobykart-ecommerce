@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('galleries', function (Blueprint $table) {
+        Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->text('image');
-            $table->text('slug');
+            $table->decimal('discount', 10, 2);
+            $table->string('slug');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('galleries');
+        Schema::dropIfExists('discounts');
     }
 };

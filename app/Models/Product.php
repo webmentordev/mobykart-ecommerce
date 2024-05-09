@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Models\Brand;
+use App\Models\Gallery;
 use App\Models\Category;
+use App\Models\Discount;
 use App\Models\ProductTag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -41,5 +43,9 @@ class Product extends Model
 
     public function gallery(){
         return $this->hasMany(Gallery::class);
+    }
+
+    public function discount(){
+        return $this->hasOne(Discount::class);
     }
 }

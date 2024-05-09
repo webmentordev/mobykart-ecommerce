@@ -14,7 +14,9 @@ class ProductController extends Controller
     // List all products
     public function index(){
         return view('dashboard.products.index', [
-            'products' => Product::latest()->with(['brand', 'category'])->withCount('tags')->paginate(100)
+            'products' => Product::latest()
+                ->with(['brand', 'category', 'tags', 'discount', 'gallery'])
+                ->withCount(['tags', 'gallery'])->paginate(100)
         ]);
     }
 

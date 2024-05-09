@@ -13,7 +13,7 @@ class GalleryController extends Controller
     public function index()
     {
         return view('dashboard.gallery.index', [
-            'images' => Gallery::latest()->get(),
+            'images' => Gallery::latest()->with('product')->get(),
             'products' => Product::latest()->get()
         ]);
     }

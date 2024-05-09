@@ -1,5 +1,5 @@
 ## Project Details
-This product is extended from my e-commerce template
+This project is extended from my e-commerce template
 * Stripe integration (Not paypal)
 * Create products (need Category & Brand)
 * Products has relation with category & brand
@@ -12,6 +12,8 @@ This product is extended from my e-commerce template
 * Tags for the products to quick search related products
 * Tags and products has a relation and separate system
 * Tag for product should be unique (protect tags from duplication)
+* Product has discount system (relation system)
+* Create/Add discount for each product
 * Pending email (url - string)
 * Processed email (orderID - string)
 * Canceled email (orderID - string)

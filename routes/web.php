@@ -13,6 +13,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductTagController;
 
@@ -74,6 +75,10 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(func
         Route::post('/gallery/store/', [GalleryController::class, 'store'])->name('gallery.store');
         Route::patch('/gallery/store/{gallery:slug}', [GalleryController::class, 'status'])->name('gallery.status');
         Route::delete('/gallery/delete/{gallery:slug}', [GalleryController::class, 'delete'])->name('gallery.delete');
+
+        Route::get('/product-discounts', [DiscountController::class, 'index'])->name('product.discount');
+        Route::post('/product-discount/store/', [DiscountController::class, 'store'])->name('product.discount.store');
+        Route::delete('/product-discount/delete/{discount:slug}', [DiscountController::class, 'delete'])->name('product.discount.delete');
     });
 });
 

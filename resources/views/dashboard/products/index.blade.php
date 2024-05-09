@@ -25,6 +25,8 @@
                                 <th class="text-start">Slug</th>
                                 <th class="text-start">Price</th>
                                 <th class="text-start">Tags</th>
+                                <th class="text-start">Discount</th>
+                                <th class="text-start">Gallery</th>
                                 <th class="text-start">Brand</th>
                                 <th class="text-start">Category</th>
                                 <th class="text-start">Featured</th>
@@ -40,6 +42,14 @@
                                     <td class="text-start">{{ $item->slug }}</td>
                                     <td class="text-start">${{ number_format($item->price, 2) }}</td>
                                     <td class="text-start">{{ $item->tags_count }}</td>
+                                    <td class="text-start">
+                                        @if ($item->discount)
+                                        <span class="text-red-600 font-semibold">%{{ $item->discount->discount }}</span>
+                                        @else
+                                        N/A
+                                        @endif
+                                    </td>
+                                    <td class="text-start">{{ $item->gallery_count }}</td>
                                     <td class="text-start">{{ $item->brand->title }}</td>
                                     <td class="text-start">{{ $item->category->title }}</td>
                                     <td class="text-start">
