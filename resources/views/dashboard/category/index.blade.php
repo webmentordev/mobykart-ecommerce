@@ -67,14 +67,20 @@
                                                 <h3 class="font-bold name">Update the category</h3>
                                                 <span x-on:click="open = false" class="underline text-gray-700 cursor-pointer">Close</span>
                                             </div>
-                                            <form action="{{ route('admin.category.update', $item->slug) }}" method="post" class="flex items-center">
+                                            <form action="{{ route('admin.category.update', $item->slug) }}" method="post" class="text-start flex flex-col">
                                                 @csrf
                                                 @method('patch')
-                                                <div class="w-full">
-                                                    <x-text-input id="title" class="block mt-1 w-full" placeholder="Category name" type="text" name="title" :value="$item->title" required />
+                                                <div class="w-full mb-3">
+                                                    <x-input-label for="title" :value="__('Category')" />
+                                                    <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="$item->title" required />
                                                     <x-input-error :messages="$errors->get('title')" class="mt-2" />
                                                 </div>
-                                                <x-primary-button class="ml-3 py-3">
+                                                <div class="w-full">
+                                                    <x-input-label for="slug" :value="__('Slug')" />
+                                                    <x-text-input id="slug" class="block mt-1 w-full" type="text" name="slug" :value="$item->slug" required />
+                                                    <x-input-error :messages="$errors->get('slug')" class="mt-2" />
+                                                </div>
+                                                <x-primary-button class="mt-3 py-3 w-fit">
                                                     {{ __('Update') }}
                                                 </x-primary-button>
                                             </form>

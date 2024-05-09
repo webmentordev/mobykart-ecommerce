@@ -30,11 +30,12 @@ class BrandController extends Controller
     // Update the brand
     public function update(Request $request, Brand $brand){
         $request->validate([
-            'title' => ['required', 'max:255', 'string', 'unique:brands,title']
+            'title' => ['required', 'max:255', 'string'],
+            'slug' => ['required', 'max:255', 'string']
         ]);
         $brand->update([
             'title' => $request->title,
-            'slug'=> str_replace(' ', '-', strtolower($request->title))
+            'slug'=> str_replace(' ', '-', strtolower($request->slug))
         ]);
         return back()->with('success', 'Brand has been updated!');
     }
