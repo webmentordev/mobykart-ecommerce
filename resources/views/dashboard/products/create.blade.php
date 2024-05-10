@@ -58,20 +58,20 @@
                                 <x-input-error :messages="$errors->get('category')" class="mt-2" />
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="w-full mb-3">
-                                <x-input-label for="description" :value="__('Description')" />
-                                <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required />
-                                <x-input-error :messages="$errors->get('description')" class="mt-2" />
-                            </div>
-                            <div class="w-full mb-3">
-                                <x-input-label for="seo" :value="__('SEO')" />
-                                <x-text-input id="seo" class="block mt-1 w-full" type="text" name="seo" :value="old('seo')" required />
-                                <x-input-error :messages="$errors->get('seo')" class="mt-2" />
-                            </div>
+                        <div class="w-full mb-3">
+                            <x-input-label for="seo" :value="__('SEO')" />
+                            <x-text-input id="seo" class="block mt-1 w-full" type="text" name="seo" :value="old('seo')" required />
+                            <x-input-error :messages="$errors->get('seo')" class="mt-2" />
                         </div>
-                        <textarea id="body" name="body">{{ old('body') }}</textarea>
-                        <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                        <div class="w-full mb-3">
+                            <x-input-label for="description" :value="__('Description')" />
+                            <textarea id="description" name="description">{{ old('description') }}</textarea>
+                            <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                        </div>
+                        <div class="w-full mb-3">
+                            <textarea id="body" name="body">{{ old('body') }}</textarea>
+                            <x-input-error :messages="$errors->get('body')" class="mt-2" />
+                        </div>
                         <div class="w-full my-3">
                             <x-input-label for="image" :value="__('Image')" />
                             <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" required />
@@ -90,6 +90,7 @@
                 filebrowserUploadUrl: "{{route('admin.image.upload', ['_token' => csrf_token() ])}}",
                 filebrowserUploadMethod: 'form'
             });
+            CKEDITOR.replace( 'description');
         </script>
     </div>
 </x-app-layout>

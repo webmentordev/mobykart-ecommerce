@@ -19,7 +19,7 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'string']
+            'name' => ['required', 'max:255', 'string', 'unique:tags,name']
         ]);
         $array = explode(',', $request->name);
         foreach($array as $item){

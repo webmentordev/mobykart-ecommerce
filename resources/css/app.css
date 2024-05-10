@@ -19,3 +19,21 @@
 .tb-btn-disable{
     @apply py-1 px-3 bg-red-600 text-white font-semibold rounded-lg;
 }
+.description{
+    @apply text-sm text-gray-500;
+}
+.description ul{
+    list-style: disc;
+}
+.description p{
+    @apply my-3
+}
+.description ul, .description ol{
+    @apply ml-6;
+}
+.description ul li::marker, .description ol li::marker {
+    @apply text-red-600;
+}
+.description ul li, .description ol li{
+    @apply mb-2;
+}
