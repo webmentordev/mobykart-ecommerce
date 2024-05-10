@@ -22,6 +22,7 @@
         <main>
             {{ $slot }}
         </main>
+        @livewire('components.footer')
         @livewireScripts
     </body>
 </html>
