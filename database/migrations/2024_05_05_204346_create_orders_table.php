@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('transit_id')->nullable(); // Tracking ID for logistics
             $table->string('logistics')->nullable();
-            $table->foreignId('product_id');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->bigInteger('quantity');
             $table->decimal('price', 10, 2);
             $table->boolean('is_paid')->default(false);

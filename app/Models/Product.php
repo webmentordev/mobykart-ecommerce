@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Brand;
+use App\Models\Order;
 use App\Models\Gallery;
 use App\Models\Category;
 use App\Models\Discount;
@@ -47,5 +48,9 @@ class Product extends Model
 
     public function discount(){
         return $this->hasOne(Discount::class);
+    }
+
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
 }

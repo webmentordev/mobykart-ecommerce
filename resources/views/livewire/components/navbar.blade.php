@@ -11,7 +11,7 @@
             <div class="flex items-center">
                 <a href="{{ route('cart') }}" class="relative" wire:navigate>
                     <img src="https://api.iconify.design/teenyicons:bag-outline.svg?color=%23292929" alt="Cart icon" width="30">
-                    <span class="absolute -top-3 -right-2 bg-red-600 text-white rounded-full text-sm w-[20px] h-[20px] flex items-center justify-center">0</span>
+                    <span class="absolute -top-3 -right-2 bg-red-600 text-white rounded-full text-sm w-[20px] h-[20px] flex items-center justify-center">{{ $cartCount }}</span>
                 </a>
             </div>
         </div>

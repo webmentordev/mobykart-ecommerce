@@ -26,3 +26,6 @@ This project is extended from my e-commerce template
 * Gallery to upload pictures about the product
 * Gallery images will showup in the single product page
 * Home, product, cart & products pages are build with Livewire
+* Single product page to show product details with quantity change
+* AddToCart products for bulk purchase
+* Buy Now to instantly purchase the product
