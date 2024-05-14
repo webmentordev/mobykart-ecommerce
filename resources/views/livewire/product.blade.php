@@ -1,6 +1,6 @@
 <section class="w-full">
     <div class="max-w-7xl m-auto w-full py-6 px-4">
-        <div wire:target='buyNow' wire:target='addToCart' wire:loading>
+        <div wire:target='buyNow, addToCart, increment, decrement' wire:loading>
             <x-alerts.processing message="Processing..." />
         </div>
         @session('success')

@@ -19,8 +19,9 @@
     <div class="max-w-7xl py-6 px-4 m-auto w-full flex items-center justify-between">
         <ul class="flex items-center uppercase font-semibold text-sm">
             <a class="pr-4" href="/" wire:navigate>Home</a>
+            <a class="px-4" href="{{ route('products') }}" wire:navigate>Products</a>
+            <a class="px-4" href="{{ route('cart') }}" wire:navigate>Cart</a>
             <a class="px-4" href="/" wire:navigate>About</a>
-            <a class="px-4" href="/" wire:navigate>Cart</a>
             <a class="px-4" href="/" wire:navigate>FAQ</a>
             <a class="px-4" href="/" wire:navigate>Contact</a>
             @auth

@@ -36,6 +36,7 @@ class OrderController extends Controller
     public function cancel(Order $order){
         if($order->payment == 'pending'){
             $order->payment = 'canceled';
+            $order->shipping = 'canceled';
             $order->save();
         }
         return view('order.cancel', [
