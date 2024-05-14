@@ -18,7 +18,7 @@ class Navbar extends Component
         return view('livewire.components.navbar');
     }
 
-    #[On('added-to-cart')] 
+    #[On('cart-function')] 
     public function cartRefresh(){
         $this->cartCount = count(session()->get('cart'));
     }

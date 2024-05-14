@@ -93,7 +93,8 @@ class Product extends Component
         $cartItems = session()->get('cart');
         $cartItems[$this->product->slug] = [
             'quantity' => $this->quantity,
-            'price' => $this->price,
+            'total' => $this->price,
+            'price' => number_format($this->product->price, 2),
             'product_id' => $this->product->stripe_id,
             'slug' => $this->product->slug,
             'name' => $this->product->title,
@@ -101,6 +102,6 @@ class Product extends Component
         ];
         session()->put('cart', $cartItems);
         session()->flash('success', 'Added to the cart!');
-        $this->dispatch('added-to-cart'); 
+        $this->dispatch('cart-function'); 
     }
 }
