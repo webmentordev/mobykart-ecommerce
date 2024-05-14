@@ -58,6 +58,12 @@ class Product extends Component
     private function buyNow_click(){
         $stripe = new StripeClient(config('app.stripe'));
         $orderID = $this->orderIdGenerator();
+        $price = 0;
+        if($this->product->discount){
+            $price = $this->price - ($this->price * ($this->product->discount->discount / 100));
+        }else{
+            $price = $this->price;
+        }
         $checkout = $stripe->checkout->sessions->create([
             'success_url' => config('app.url').'/complete/'.$orderID,
             'cancel_url' => config('app.url').'/cancel/'.$orderID,
@@ -69,7 +75,7 @@ class Product extends Component
                         'price_data' => [
                         "product" => $this->product->stripe_id,
                         "currency" => 'USD',
-                        "unit_amount" =>  $this->price * 100,
+                        "unit_amount" =>  $price * 100,
                     ], 
                 'quantity' => 1 
                 ],
@@ -81,7 +87,7 @@ class Product extends Component
             'email' => $this->email,
             'product_id' => $this->product->id,
             'quantity' => $this->quantity,
-            'price' => $this->price,
+            'price' => $price,
             'order_id' => $orderID,
             'url' => $checkout['url']
         ]);
@@ -91,10 +97,16 @@ class Product extends Component
 
     public function addToCart(){
         $cartItems = session()->get('cart');
+        $price = 0;
+        if($this->product->discount){
+            $price = $this->product->price - ($this->product->price * ($this->product->discount->discount / 100));
+        }else{
+            $price = $this->product->price;
+        }
         $cartItems[$this->product->slug] = [
             'quantity' => $this->quantity,
-            'total' => $this->price,
-            'price' => number_format($this->product->price, 2),
+            'total' => $price * $this->quantity,
+            'price' => number_format($price, 2),
             'product_id' => $this->product->stripe_id,
             'slug' => $this->product->slug,
             'name' => $this->product->title,
@@ -102,6 +114,6 @@ class Product extends Component
         ];
         session()->put('cart', $cartItems);
         session()->flash('success', 'Added to the cart!');
-        $this->dispatch('cart-function'); 
+        $this->dispatch('cart-function');
     }
 }

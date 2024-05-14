@@ -29,3 +29,5 @@ This project is extended from my e-commerce template
 * Single product page to show product details with quantity change
 * AddToCart products for bulk purchase
 * Buy Now to instantly purchase the product
+* Apply Discount on all products
+* SignedURL for order complete and cancel for protection

@@ -23,8 +23,8 @@ Route::get('/product/{product:slug}', Product::class)->name('product');
 Route::get('/cart', Cart::class)->name('cart');
 
 // Order payment status routes
-Route::get('/complete/{order:order_id}', [OrderController::class, 'complete']);
-Route::get('/cancel/{order:order_id}', [OrderController::class, 'cancel']);
+Route::get('/complete/{order:order_id}', [OrderController::class, 'complete'])->name('completed');
+Route::get('/cancel/{order:order_id}', [OrderController::class, 'cancel'])->name('canceled');
 
 Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(function () {
     // Route for dashboard, admin only

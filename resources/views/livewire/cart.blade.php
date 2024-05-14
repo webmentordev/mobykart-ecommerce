@@ -1,14 +1,15 @@
 <section class="w-full min-h-[50vh] h-full border-b border-gray-200">
     <div class="max-w-4xl m-auto py-12 px-4 h-full flex items-center justify-center">
-        <div wire:target='increment, decrement' wire:loading>
+        <div wire:target='increment, decrement, confirmOrder' wire:loading>
             <x-alerts.processing message="Processing..." />
         </div>
         <div class="w-full">
             @if ($cartItems)
                 <div class="flex items-center justify-between mb-3">
                     <h2 class="font-bold text-2xl">Order Summary</h2>
-                    <button wire:click="emptyCart" class="p-2 rounded-full bg-red-600/10">
+                    <button wire:click="emptyCart" class="p-2 rounded-full bg-red-600/10 group relative">
                         <img src="https://api.iconify.design/ci:trash-full.svg?color=%23d40808" width="20" alt="Empty cart icon">
+                        <span class="hidden absolute p-2 top-10 right-0 bg-black/80 rounded-md group-hover:block text-white w-[120px] text-sm">Empty cart</span>
                     </button>
                 </div>
                 <div class="border border-gray-200 p-6 rounded-xl">
@@ -54,12 +55,21 @@
                         <span class="text-3xl font-semibold"><span class="text-red-600 text-lg">US</span>${{ number_format($totalPrice, 2) }}</span>
                     </div>
 
-                    <div class="flex justify-between items-center">
-                        <form wire:click='checkoutNow' method="post" class="w-full">
-
-
-                            <button type="submit" class="py-3 bg-black text-white font-semibold rounded-xl px-4 w-full">Confirm order & Pay</button>
-                        </form>
+                    <div class="flex justify-between items-center" x-data="{ open : false }">
+                        <button x-on:click="open = true" class="py-3 bg-black text-white font-semibold rounded-xl px-4 w-full">Confirm Order</button>
+                        <div class="fixed z-20 top-0 left-0 w-full h-full bg-black/90 backdrop-blur-md" x-show="open" x-cloak x-transition>
+                            <div class="w-full h-full flex items-center justify-center" x-on:click.self="open = false">
+                                <div class="max-w-lg w-full bg-white p-6 rounded-xl">
+                                    <form wire:submit='confirmOrder' method="POST">
+                                        <h3 class="mb-3 font-bold text-2xl">Click Buy Now & Pay</h3>
+                                        <p class="text-sm mb-2 text-gray-500">We'll send you the tracking ID and order information to the email provided. For your privacy and security, we'll collect the shipping address and contact number on the Stripe checkout page.</p>
+                                        <x-input type="email" wire:model='email' name="email" placeholder="Email address" class="bg-gray-200 py-2 px-3 rounded-lg mb-2" />
+                                        <x-input-error :messages="$errors->get('email')" class="mb-2" />
+                                        <x-primary-button>Pay Now</x-primary-button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @else

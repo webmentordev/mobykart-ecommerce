@@ -21,11 +21,15 @@ class OrderController extends Controller
     }
 
     // Mark order as completed & send email
-    public function complete(Order $order){
+    public function complete(Request $request, Order $order){
+        if (!$request->hasValidSignature()) {
+            abort(401);
+        }
         if($order->payment == 'pending'){
-            $order->is_paid = true;
-            $order->payment = 'completed';
-            $order->save();
+            Order::where('order_id', $order->order_id)->update([
+                'is_paid' => true,
+                'payment' => 'completed'
+            ]);
         }
         return view('order.completed', [
             'order' => $order
@@ -33,11 +37,15 @@ class OrderController extends Controller
     }
 
     // Mark order as canceled & send email
-    public function cancel(Order $order){
+    public function cancel(Request $request, Order $order){
+        if (!$request->hasValidSignature()) {
+            abort(401);
+        }
         if($order->payment == 'pending'){
-            $order->payment = 'canceled';
-            $order->shipping = 'canceled';
-            $order->save();
+            Order::where('order_id', $order->order_id)->update([
+                'payment' => 'canceled',
+                'shipping' => 'canceled'
+            ]);
         }
         return view('order.cancel', [
             'order' => $order
