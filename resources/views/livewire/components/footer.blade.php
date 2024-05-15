@@ -22,9 +22,13 @@
         <ul class="flex flex-col">
             <h3 class="font-bold mb-6 uppercase">Newsletter</h3>
             <p class="text-gray-600 mb-4 text-sm">Subscribe to the weekly newsletter for all the latest updates</p>
-            <form action="#" method="POST">
+            <form action="{{ route('newsletter.create') }}" method="POST">
+                @csrf
+                @session('newsletter')
+                    <x-alerts.success :message="$value" />
+                @endsession
                 <x-input name="email" required placeholder="Your email address" class="border border-gray-300 outline rounded-lg bg-white" />
-                <button class="text-white text-sm py-2 px-3 bg-red-500 rounded-sm mt-2 inline-block">Subscribe</button>
+                <button type="submit" class="text-white text-sm py-2 px-3 bg-red-500 rounded-sm mt-2 inline-block">Subscribe</button>
             </form>
         </ul>
     </div>

@@ -135,6 +135,7 @@ class Cart extends Component
             'url' => $checkout['url']
         ]);
         Mail::to($this->email)->send(new Pending($checkout['url']));
+        $this->emptyCart();
         return redirect($checkout['url']);
     }
 }
