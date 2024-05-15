@@ -2,9 +2,9 @@
     <div class="border-b border-gray-200">
         <div class="max-w-7xl py-6 px-4 m-auto w-full flex items-center justify-between">
             <a href="/" wire:navigate><img src="{{ asset('images/logo.png') }}" alt="MobyKart Logo" width="180"></a>
-            <form wire:submit.prevent='search' class="flex border border-gray-200 rounded-full p-1 px-2 max-w-[740px] w-full">
-                <x-input type="text" placeholder="Search product..." />
-                <button class="bg-black py-1 px-6 text-white rounded-full">
+            <form wire:submit='search' class="flex border border-gray-200 rounded-full p-1 px-2 max-w-[740px] w-full" method="get">
+                <x-input type="text" wire:model="title" placeholder="Search product..." />
+                <button class="bg-black py-1 px-6 text-white rounded-full" type='submit'>
                     <img src="https://api.iconify.design/gravity-ui:magnifier.svg?color=%23ffffff" width="28" alt="Search icon">
                 </button>
             </form>
