@@ -17,11 +17,13 @@ use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductTagController;
+use App\Livewire\Brands;
+use App\Livewire\Categories;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/products', Products::class)->name('products');
-Route::get('/products/category/{category:slug}', Products::class)->name('products.category');
-Route::get('/products/brand/{brand:slug}', Products::class)->name('products.brand');
+Route::get('/products/category/{category:slug}', Categories::class)->name('products.category');
+Route::get('/products/brand/{brand:slug}', Brands::class)->name('products.brand');
 Route::get('/product/{product:slug}', Product::class)->name('product');
 Route::get('/cart', Cart::class)->name('cart');
 

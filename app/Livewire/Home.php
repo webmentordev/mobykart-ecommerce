@@ -12,8 +12,8 @@ class Home extends Component
     public function render()
     {
         return view('livewire.home', [
-            'categories' => Category::latest()->where('is_active', true)->withCount('products')->get(),
-            'brands' => Brand::latest()->where('is_active', true)->withCount('products')->get(),
+            'categories' => Category::latest()->where('is_active', true)->withCount('active_products')->get(),
+            'brands' => Brand::latest()->where('is_active', true)->withCount('active_products')->get(),
             'products' => Product::latest()->where('is_active', true)->get(),
         ]);
     }

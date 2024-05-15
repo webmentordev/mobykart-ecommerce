@@ -17,8 +17,7 @@ class CategoryController extends Controller
     // Create a new category
     public function store(Request $request){
         $request->validate([
-            'title' => ['required', 'max:255', 'string', 'unique:categories,title'],
-            'slug' => ['required', 'max:255', 'string']
+            'title' => ['required', 'max:255', 'string', 'unique:categories,title']
         ]);
         Category::create([
             'title' => $request->title,

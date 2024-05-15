@@ -21,9 +21,9 @@
             <a class="pr-4" href="/" wire:navigate>Home</a>
             <a class="px-4" href="{{ route('products') }}" wire:navigate>Products</a>
             <a class="px-4" href="{{ route('cart') }}" wire:navigate>Cart</a>
-            <a class="px-4" href="/" wire:navigate>About</a>
+            {{-- <a class="px-4" href="/" wire:navigate>About</a>
             <a class="px-4" href="/" wire:navigate>FAQ</a>
-            <a class="px-4" href="/" wire:navigate>Contact</a>
+            <a class="px-4" href="/" wire:navigate>Contact</a> --}}
             @auth
                 <a class="px-4" href="{{ route('dashboard') }}" wire:navigate>Dashboard</a>
             @endauth

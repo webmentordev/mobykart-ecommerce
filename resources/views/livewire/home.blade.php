@@ -6,9 +6,9 @@
                 <ul class="flex flex-col">
                     @foreach ($categories as $category)
                         @if(!$loop->last)
-                            <a href="{{ route('products') }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3 border-b border-gray-200">{{ $category->title }} <span class="text-gray-400">({{ $category->products_count }})</span></a>
+                            <a wire:navigate href="{{ route('products.category', $category->slug) }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3 border-b border-gray-200">{{ $category->title }} <span class="text-gray-400">({{ $category->active_products_count }})</span></a>
                         @else
-                            <a href="{{ route('products') }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3">{{ $category->title }} <span class="text-gray-400">({{ $category->products_count }})</span></a>
+                            <a wire:navigate href="{{ route('products.category', $category->slug) }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3">{{ $category->title }} <span class="text-gray-400">({{ $category->active_products_count }})</span></a>
                         @endif
                     @endforeach
                 </ul>
@@ -18,9 +18,9 @@
                 <ul class="flex flex-col">
                     @foreach ($brands as $brand)
                         @if(!$loop->last)
-                            <a href="{{ route('products') }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3 border-b border-gray-200">{{ $brand->title }} ({{ $brand->products_count }})</a>
+                            <a wire:navigate href="{{ route('products.brand', $brand->slug) }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3 border-b border-gray-200">{{ $brand->title }} ({{ $brand->active_products_count }})</a>
                         @else
-                            <a href="{{ route('products') }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3">{{ $brand->title }} ({{ $brand->products_count }})</a>
+                            <a wire:navigate href="{{ route('products.brand', $brand->slug) }}" class="capitalize font-medium text-gray-500 text-[12px] pt-3 pb-2 px-3">{{ $brand->title }} ({{ $brand->active_products_count }})</a>
                         @endif
                     @endforeach
                 </ul>
