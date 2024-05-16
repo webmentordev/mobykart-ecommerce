@@ -41,7 +41,7 @@
     @apply text-sm;
 }
 .article ul, .article ol{
-    @apply ml-8;
+    @apply ml-8 460px:ml-2;
 }
 .article p{
     @apply mb-4 leading-6;

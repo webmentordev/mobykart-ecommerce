@@ -1,7 +1,7 @@
 <section class="w-full min-h-[40vh]">
     <div class="max-w-7xl m-auto w-full py-6 px-4 flex">
         @if (count($products))
-            <div class="w-full ml-3 grid grid-cols-5 gap-4">
+            <div class="w-full ml-3 grid grid-cols-5 gap-4 1120px:grid-cols-4 850px:grid-cols-3 580px:grid-cols-2 440px:grid-cols-1">
                 @foreach ($products as $product)
                     <a href="{{ route('product', $product->slug) }}" :title="$product->title" class="relative border px-4 py-2 border-gray-200 group rounded-xl" wire:navigate>
                         @if ($product->discount)

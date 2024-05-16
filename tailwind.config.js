@@ -16,6 +16,38 @@ export default {
             },
             colors: {
                 'primary-dark': '#1f1f21'
+            },
+            screens: {
+                "1120px": {
+                    "max": "1120px"
+                },
+                "1000px": {
+                    "max": "1000px"
+                },
+                "980px": {
+                    "max": "980px"
+                },
+                "900px": {
+                    "max": "900px"
+                },
+                "850px": {
+                    "max": "850px"
+                },
+                "680px": {
+                    "max": "680px"
+                },
+                "580px": {
+                    "max": "580px"
+                },
+                "500px": {
+                    "max": "500px"
+                },
+                "460px": {
+                    "max": "460px"
+                },
+                "440px": {
+                    "max": "440px"
+                }
             }
         },
     },

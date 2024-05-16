@@ -15,7 +15,7 @@
                 <div class="border border-gray-200 p-6 rounded-xl">
                     <div class="border-b border-gray-200 pb-2">
                         @foreach ($cartItems as $cart)
-                            <div class="flex items-center justify-between mb-6 relative">
+                            <div class="flex items-center justify-between mb-6 relative 500px:border-b 500px:pb-6 500px:border-gray-100">
                                 <button wire:click="removeItem('{{ $cart['slug'] }}')" class="ml-2 p-2 rounded-full bg-red-600/10 absolute -top-3 -left-4">
                                     <img src="https://api.iconify.design/noto:cross-mark.svg?color=%23d40808" width="10" alt="Cross icon">
                                 </button>
@@ -24,11 +24,19 @@
                                         <img src="{{ asset($cart['image']) }}" alt="{{ $cart['name'] }}" width="60">
                                     </div>
                                     <div class="ml-3">
-                                        <a href="{{ route('product', $cart['slug']) }}" class="font-bold text-lg underline hover:text-red-600">{{ $cart['name'] }}</a>
-                                        <p class="text-sm text-gray-500"><strong>Quantity:</strong> <span class="text-red-600 font-semibold">x{{ $cart['quantity'] }}</span></p>
+                                        <a href="{{ route('product', $cart['slug']) }}" class="font-bold text-lg underline hover:text-red-600">{{ $cart['name'] }} <h4 class="font-semibold m-auto hidden 500px:block">${{ number_format($cart['total'], 2) }}</h4></a>
+                                        <p class="text-sm text-gray-500 500px:hidden"><strong>Quantity:</strong> <span class="text-red-600 font-semibold">x{{ $cart['quantity'] }}</span></p>
+                                        <div class="hidden 500px:flex flex-col">
+                                            
+                                            <div class="flex justify-between items-center border border-gray-200 rounded-lg">
+                                                <button class="px-2 py-1 border-r border-gray-200" wire:click="decrement('{{ $cart['slug'] }}')">-</button>
+                                                <span class="px-3">{{ $cart['quantity'] }}</span>
+                                                <button class="px-2 py-1 border-l border-gray-200" wire:click="increment('{{ $cart['slug'] }}')">+</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col 500px:hidden">
                                     <h4 class="font-semibold m-auto">${{ number_format($cart['total'], 2) }}</h4>
                                     <div class="flex justify-between items-center border border-gray-200 rounded-lg">
                                         <button class="px-2 py-1 border-r border-gray-200" wire:click="decrement('{{ $cart['slug'] }}')">-</button>
@@ -58,7 +66,7 @@
                     <div class="flex justify-between items-center" x-data="{ open : false }">
                         <button x-on:click="open = true" class="py-3 bg-black text-white font-semibold rounded-xl px-4 w-full">Confirm Order</button>
                         <div class="fixed z-20 top-0 left-0 w-full h-full bg-black/90 backdrop-blur-md" x-show="open" x-cloak x-transition>
-                            <div class="w-full h-full flex items-center justify-center" x-on:click.self="open = false">
+                            <div class="w-full h-full flex items-center justify-center px-4" x-on:click.self="open = false">
                                 <div class="max-w-lg w-full bg-white p-6 rounded-xl">
                                     <form wire:submit='confirmOrder' method="POST">
                                         <h3 class="mb-3 font-bold text-2xl">Click Buy Now & Pay</h3>

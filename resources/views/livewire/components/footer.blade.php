@@ -1,5 +1,5 @@
 <footer class="bg-gray-100">
-    <div class="max-w-7xl m-auto py-12 px-4 grid grid-cols-4 gap-6">
+    <div class="max-w-7xl m-auto py-12 px-4 grid grid-cols-4 gap-6 1000px:grid-cols-3 680px:grid-cols-1">
         <div class="flex flex-col">
             <img src="{{ asset('images/logo.png') }}" width="200px" alt="MobiKart Logo" class="mb-4">
             <p class="text-gray-600 mb-4 text-sm">If you have any question, please contact us at</p>
@@ -11,14 +11,14 @@
                 <a class="capitalize text-gray-600 mb-3 hover:text-red-600 text-sm" href="/category/{{ $category->slug }}">{{ $category->title }}</a>
             @endforeach
         </ul>
-        {{-- <ul class="flex flex-col">
+        <ul class="flex flex-col">
             <h3 class="font-bold mb-6 uppercase">Customer Services</h3>
             <a class="capitalize text-gray-600 mb-3 hover:text-red-600 text-sm" href="/contact">Contact Us</a>
             <a class="capitalize text-gray-600 mb-3 hover:text-red-600 text-sm" href="/">Track your Order</a>
             <a class="capitalize text-gray-600 mb-3 hover:text-red-600 text-sm" href="/">Return policy</a>
             <a class="capitalize text-gray-600 mb-3 hover:text-red-600 text-sm" href="/">Privacy Policy</a>
             <a class="capitalize text-gray-600 mb-3 hover:text-red-600 text-sm" href="/">Terms of service</a>
-        </ul> --}}
+        </ul>
         <ul class="flex flex-col">
             <h3 class="font-bold mb-6 uppercase">Newsletter</h3>
             <p class="text-gray-600 mb-4 text-sm">Subscribe to the weekly newsletter for all the latest updates</p>
