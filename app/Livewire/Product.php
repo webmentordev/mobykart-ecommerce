@@ -7,6 +7,7 @@ use App\Mail\Pending;
 use App\Models\Order;
 use Livewire\Component;
 use Stripe\StripeClient;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Product as SingleProduct;
 
@@ -64,9 +65,11 @@ class Product extends Component
         }else{
             $price = $this->price;
         }
+        $completed = URL::temporarySignedRoute('completed', now()->addMinutes(360), ['order' => $orderID]);
+        $canceled = URL::temporarySignedRoute('canceled', now()->addMinutes(360), ['order' => $orderID]);
         $checkout = $stripe->checkout->sessions->create([
-            'success_url' => config('app.url').'/complete/'.$orderID,
-            'cancel_url' => config('app.url').'/cancel/'.$orderID,
+            'success_url' => $completed,
+            'cancel_url' => $canceled,
             'currency' => "USD",
             'billing_address_collection' => 'required',
             'expires_at' => Carbon::now()->addMinutes(360)->timestamp,

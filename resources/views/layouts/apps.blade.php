@@ -18,10 +18,14 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
+        @livewire('components.navbar')
         <main>
             @yield('content')
         </main>
+        @livewire('components.footer')
+        @livewireScripts
     </body>
 </html>
