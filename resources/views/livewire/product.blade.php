@@ -10,6 +10,15 @@
         <div class="grid grid-cols-2 gap-12 mb-6 980px:grid-cols-1">
             <div class="w-full">
                 <img src="{{ asset('storage/'. $product->image) }}" alt="{{ $product->title }}" title="{{ $product->title }}" class="border border-gray-200 rounded-xl w-full">
+                @if (count($product->gallery))
+                    <div class="grid grid-cols-{{ count($product->gallery) }} gap-6 mt-6">
+                        @foreach ($product->gallery as $gallery)
+                            <div class="p-2 border border-gray-200 rounded-xl">
+                                <img src="{{ asset('storage/'.$gallery->image) }}" class="rounded-xl" alt="{{ $product->title }} Image {{ $loop->index + 1 }}">
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
             <div class="w-full">
                 <h1 class="mb-1 font-medium text-3xl">{{ $product->title }}</h1>
