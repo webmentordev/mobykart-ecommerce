@@ -18,6 +18,7 @@ use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductTagController;
+use App\Http\Controllers\TrackingController;
 use App\Livewire\Brands;
 use App\Livewire\Categories;
 
@@ -38,6 +39,9 @@ Route::post('/newsletter/subscribe', [NewsletterController::class, 'store'])->na
 // Contact routes
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store']);
+
+// Track Order routes
+Route::get('/track-order', [TrackingController::class, 'index'])->name('track.order');
 
 Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(function () {
     // Route for dashboard, admin only
