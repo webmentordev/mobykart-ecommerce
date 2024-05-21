@@ -17,6 +17,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProductTagController;
 use App\Http\Controllers\TrackingController;
 use App\Livewire\Brands;
@@ -35,6 +36,11 @@ Route::get('/cancel/{order:order_id}', [OrderController::class, 'cancel'])->name
 
 // Newsletter Subscription
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'store'])->name('newsletter.create');
+
+// Policy routes
+Route::get('/terms-of-service', [PolicyController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', [PolicyController::class, 'privacy'])->name('privacy');
+Route::get('/return-policy', [PolicyController::class, 'return'])->name('return');
 
 // Contact routes
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
