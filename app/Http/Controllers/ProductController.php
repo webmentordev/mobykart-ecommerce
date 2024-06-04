@@ -72,7 +72,7 @@ class ProductController extends Controller
             'slug' => ['required'],
             'brand' => ['required', 'numeric'],
             'category' => ['required', 'numeric'],
-            'description' => ['required', 'max:255'],
+            'description' => ['required'],
             'seo' => ['required', 'max:255'],
             'body' => ['required'],
             'image' => ['nullable', 'image', 'max:2500', 'mimes:png,jpg,webp,jpeg']

@@ -75,7 +75,7 @@
                 @endif
             </div>
         </div>
-        <article class="article">
+        <article class="article max-w-4xl m-auto">
             {!! $product->body !!}
         </article>
     </div>

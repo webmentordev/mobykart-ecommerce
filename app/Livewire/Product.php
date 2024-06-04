@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Product as SingleProduct;
 
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+
 class Product extends Component
 {
     public $product, $quantity = 1, $price = 0;
@@ -20,6 +25,35 @@ class Product extends Component
     {
         $this->product = $product;
         $this->price = $product->price;
+
+        SEOMeta::setTitle($product->title);
+        SEOMeta::setDescription($product->seo);
+        SEOMeta::setCanonical(url('/')."/product/".$product->slug);
+        SEOMeta::addMeta('apple-mobile-web-app-title', $product->title);
+        SEOMeta::addMeta('application-name', 'MobyKart');
+        SEOMeta::addMeta('article:published_time', $product->created_at->toW3CString(), 'property');
+        SEOMeta::addMeta('article:modified_time', $product->updated_at->toW3CString(), 'property');
+        
+        OpenGraph::setTitle($product->title);
+        OpenGraph::setDescription($product->seo); 
+        OpenGraph::addProperty('type', 'product');
+        OpenGraph::addProperty('image:secure', 'https://');
+        OpenGraph::addProperty('image:alt', $product->title. ' Image');
+        OpenGraph::addProperty('locale', 'eu');
+        OpenGraph::setUrl(url('/')."/product/".$product->slug);
+        OpenGraph::addImage(url('/')."/storage/".$product->image);
+        OpenGraph::setSiteName($product->title);
+
+        TwitterCard::setTitle($product->title);
+        TwitterCard::setSite('@mobykart');
+        TwitterCard::setImage(url('/')."/storage/".$product->image);
+        TwitterCard::setDescription($product->seo);
+        
+        JsonLd::setTitle($product->title);
+        JsonLd::setDescription($product->seo);
+        JsonLd::addImage(url('/')."/storage/".$product->large_thumb);
+        JsonLd::setType('WebSite');
+        JsonLd::addImage(url('/')."/storage/".$product->large_thumb);
     }
 
     public function render()

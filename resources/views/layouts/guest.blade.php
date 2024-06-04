@@ -15,7 +15,14 @@
         {!! OpenGraph::generate() !!}
         {!! Twitter::generate() !!}
         {!! JsonLd::generate() !!}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-23YKHXMJMS"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
+            gtag('config', 'G-23YKHXMJMS');
+        </script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

@@ -3,6 +3,7 @@
 use App\Livewire\Cart;
 use App\Livewire\Home;
 use App\Livewire\Product;
+use App\Models\Product as AllProducts;
 use App\Livewire\Products;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
@@ -107,6 +108,12 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->group(func
 
         Route::get('/contacts', [ContactController::class, 'index'])->name('contacts');
     });
+});
+
+Route::get('/sitemap.xml', function(){
+    return response()->view('sitemap', [
+        'products' => AllProducts::all(),
+    ])->header('Content-Type', 'text/xml');
 });
 
 require __DIR__.'/auth.php';

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('stripe_id');
             $table->text('slug');
             $table->text('body');
-            $table->string('description');
+            $table->text('description');
             $table->string('seo');
             $table->decimal('price', 10, 2);
             $table->text('image');

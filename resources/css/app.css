@@ -69,7 +69,7 @@
     @apply mb-2;
 }
 .article img{
-    @apply m-auto;
+    @apply m-auto w-full;
 }
 
 .policy h1{
